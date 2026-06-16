@@ -1,0 +1,19 @@
+# Headless ClusterIP service — required for StatefulSet stable network identity.
+# Flask connects via the service name "mongo-service"; DNS resolves directly to the pod IP.
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+  labels:
+    app: mongo
+spec:
+  type: ClusterIP
+  clusterIP: None
+  publishNotReadyAddresses: true
+  selector:
+    app: mongo
+  ports:
+    - name: mongo
+      port: 27017
+      targetPort: 27017
+      protocol: TCP
