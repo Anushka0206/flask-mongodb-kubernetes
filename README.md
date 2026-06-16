@@ -652,7 +652,7 @@ kubectl get hpa flask-hpa -w
 | Phase | Replicas | CPU target | Notes |
 |-------|----------|------------|-------|
 | Idle | 2 | Below 70% | Minimum replicas |
-| Under load | 4 | Above 70% | HPA scaled Flask Deployment from 2 to 4 replicas |
+| Under load | 2 | 2% (idle) | HPA active; replicas increase when CPU exceeds 70% under sustained load |
 | After load stops | 2 (gradual) | Below 70% | Scale-down over ~2–3 minutes |
 
 ---
